@@ -1,7 +1,7 @@
 FROM ubuntu:20.04
 ARG DEBIAN_FRONTEND=noninteractive
 
-RUN apt-get update && apt-get install -y
+RUN apt-get update && apt-get install -y \
     curl \
     make \
     nginx \
@@ -22,15 +22,20 @@ RUN apt-get update && apt-get install -y
     php7.4-xml \
     php7.4-zip \
     php7.4-apcu \
-    php7.4-memcached \
     php7.4-redis \
     php7.4-xdebug \
     php7.4-yaml
 
 RUN apt-get clean && apt-get autoclean
 
-COPY nginx.conf /etc/nginx/nginx.conf
-COPY supervisor.conf /etc/supervisor/conf.d/supervisor.conf
+RUN ln -s /usr/sbin/php-fpm7.4 /usr/sbin/php-fpm
+
+# install composer
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/bin --filename composer
+
+COPY nginx.conf         /etc/nginx/nginx.conf
+COPY supervisor.conf    /etc/supervisor/conf.d/supervisor.conf
+COPY www.conf           /etc/php/7.4/fpm/pool.d/www.conf
 
 WORKDIR /app
 
