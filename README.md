@@ -1,6 +1,6 @@
 # symfony-image
 
-```
+```docker-compose
 services:
     traefik:
         image: traefik:2.3
