@@ -1,6 +1,6 @@
 # symfony-image
 
-```docker-compose
+```dockerfile
 services:
     traefik:
         image: traefik:2.3
@@ -41,5 +41,4 @@ networks:
             driver: default
             config:
                 - subnet: 192.168.10.0/24
-
 ```
