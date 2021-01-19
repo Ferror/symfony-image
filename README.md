@@ -27,7 +27,7 @@ services:
         command: ["make", "run"]
         labels:
             - "traefik.enable=true"
-            - "traefik.http.routers.vue.rule=Host(`symfony.malcherczyk.localhost`)"
+            - "traefik.http.routers.symfony.rule=Host(`symfony.malcherczyk.localhost`)"
         volumes:
             - ./:/app:delegated
         networks:
