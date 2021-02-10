@@ -5,6 +5,7 @@ RUN apt-get update && apt-get install -y \
     curl \
     make \
     nginx \
+    unzip \
     supervisor\
     php-common \
     php-fpm \
