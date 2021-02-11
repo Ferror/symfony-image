@@ -1,5 +1,7 @@
 # symfony-image
 
+![Docker Hub](https://badgen.net/docker/size/ferror/symfony-image/latest)
+
 ```dockerfile
 services:
     traefik:
@@ -42,3 +44,5 @@ networks:
             config:
                 - subnet: 192.168.10.0/24
 ```
+
+Badges powered by https://badgen.net/ - so if they fail - you know where to go
