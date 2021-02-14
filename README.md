@@ -24,8 +24,7 @@ services:
 
     symfony:
         container_name: "symfony"
-        build:
-            context: .
+        image: ferror/symfony-image
         command: ["make", "run"]
         labels:
             - "traefik.enable=true"
