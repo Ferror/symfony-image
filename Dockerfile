@@ -1,7 +1,7 @@
 FROM ubuntu:20.04
 ARG DEBIAN_FRONTEND=noninteractive
 
-RUN apt-get update && apt-get install --no-install-recommends -y \
+RUN apt-get update && apt-get install -y \
     curl \
     make \
     nginx \
@@ -27,7 +27,7 @@ RUN apt-get update && apt-get install --no-install-recommends -y \
     php7.4-xdebug \
     php7.4-yaml
 
-RUN apt-get clean && apt-get autoclean && rm -rf /var/lib/apt/lists/*
+RUN apt-get clean && apt-get autoclean
 
 RUN ln -s /usr/sbin/php-fpm7.4 /usr/sbin/php-fpm
 
