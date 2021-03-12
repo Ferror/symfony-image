@@ -1,6 +1,6 @@
-# symfony-image
-
 ![Docker Hub](https://badgen.net/docker/size/ferror/symfony-image/latest)
+
+# symfony-image
 
 ```dockerfile
 services:
