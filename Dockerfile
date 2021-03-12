@@ -17,7 +17,6 @@ RUN apt-get update && apt-get install -y \
     php8.0-curl \
     php8.0-intl \
     php8.0-gd \
-    php8.0-json \
     php8.0-mbstring \
     php8.0-mysql \
     php8.0-pgsql \
