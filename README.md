@@ -1,4 +1,6 @@
 ![Docker Hub](https://badgen.net/docker/size/ferror/symfony-image/latest)
+![Docker Hub](https://badgen.net/docker/size/ferror/symfony-image/7.4)
+![Docker Hub](https://badgen.net/docker/size/ferror/symfony-image/8.0)
 
 # symfony-image
 
