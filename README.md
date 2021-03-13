@@ -49,4 +49,4 @@ networks:
                 - subnet: 192.168.10.0/24
 ```
 
-Badges powered by https://badgen.net/ - so if they fail - you know where to go
+Badges powered by [Badgen](https://badgen.net) - so if they fail - you know where to go
