@@ -1,8 +1,11 @@
-![Docker Hub](https://badgen.net/docker/size/ferror/symfony-image/latest)
-![Docker Hub](https://badgen.net/docker/size/ferror/symfony-image/7.4)
-![Docker Hub](https://badgen.net/docker/size/ferror/symfony-image/8.0)
-
 # symfony-image
+
+## Docker sizes
+
+* PHP 7.4 ![Docker Hub](https://badgen.net/docker/size/ferror/symfony-image/7.4)
+* PHP 8.0 ![Docker Hub](https://badgen.net/docker/size/ferror/symfony-image/8.0)
+
+## Use Case
 
 ```dockerfile
 services:
