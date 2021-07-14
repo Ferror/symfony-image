@@ -25,7 +25,8 @@ RUN apt-get update && apt-get install -y \
     php7.4-apcu \
     php7.4-redis \
     php7.4-xdebug \
-    php7.4-yaml
+    php7.4-yaml \
+    php7.4-sqlite
 
 RUN apt-get clean && apt-get autoclean
 
