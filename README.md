@@ -1,6 +1,11 @@
-![Docker Hub](https://badgen.net/docker/size/ferror/symfony-image/latest)
-
 # symfony-image
+
+## Docker sizes
+
+* PHP 7.4 ![Docker Hub](https://badgen.net/docker/size/ferror/symfony-image/7.4)
+* PHP 8.0 ![Docker Hub](https://badgen.net/docker/size/ferror/symfony-image/8.0)
+
+## Use Case
 
 ```dockerfile
 services:
@@ -23,8 +28,7 @@ services:
                 ipv4_address: 192.168.10.2
 
     symfony:
-        container_name: "symfony"
-        image: ferror/symfony-image
+        image: ferror/symfony-image:8.0
         command: ["make", "run"]
         labels:
             - "traefik.enable=true"
@@ -44,4 +48,4 @@ networks:
                 - subnet: 192.168.10.0/24
 ```
 
-Badges powered by https://badgen.net/ - so if they fail - you know where to go
+Badges powered by [Badgen](https://badgen.net) - so if they fail - you know where to go
