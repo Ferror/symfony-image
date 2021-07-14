@@ -27,7 +27,8 @@ RUN apt-get update && apt-get install -y \
     php8.0-apcu \
     php8.0-redis \
     php8.0-xdebug \
-    php8.0-yaml
+    php8.0-yaml \
+    php8.0-sqlite
 
 RUN apt-get clean && apt-get autoclean
 
