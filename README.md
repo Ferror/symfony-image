@@ -49,4 +49,10 @@ networks:
                 - subnet: 192.168.10.0/24
 ```
 
+```makefile
+run:
+	composer install --no-interaction --prefer-dist
+	exec /usr/bin/supervisord -c /etc/supervisor/supervisord.conf
+```
+
 Badges powered by [Badgen](https://badgen.net) - so if they fail - you know where to go
