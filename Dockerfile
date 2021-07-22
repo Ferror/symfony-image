@@ -37,6 +37,8 @@ RUN ln -s /usr/sbin/php-fpm8.0 /usr/sbin/php-fpm
 # install composer
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/bin --filename composer
 
+RUN mkdir -p /run/php
+
 COPY nginx.conf         /etc/nginx/nginx.conf
 COPY supervisor.conf    /etc/supervisor/conf.d/supervisor.conf
 COPY www.conf           /etc/php/8.0/fpm/pool.d/www.conf
