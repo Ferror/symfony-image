@@ -12,27 +12,27 @@ RUN apt-get update && apt-get install -y \
     supervisor\
     php-common \
     php-fpm \
-    php8.0-cli \
-    php8.0-bz2 \
-    php8.0-curl \
-    php8.0-intl \
-    php8.0-gd \
-    php8.0-mbstring \
-    php8.0-mysql \
-    php8.0-pgsql \
-    php8.0-opcache \
-    php8.0-soap \
-    php8.0-xml \
-    php8.0-zip \
-    php8.0-apcu \
-    php8.0-redis \
-    php8.0-xdebug \
-    php8.0-yaml \
-    php8.0-sqlite
+    php8.1-cli \
+    php8.1-bz2 \
+    php8.1-curl \
+    php8.1-intl \
+    php8.1-gd \
+    php8.1-mbstring \
+    php8.1-mysql \
+    php8.1-pgsql \
+    php8.1-opcache \
+    php8.1-soap \
+    php8.1-xml \
+    php8.1-zip \
+    php8.1-apcu \
+    php8.1-redis \
+    php8.1-xdebug \
+    php8.1-yaml \
+    php8.1-sqlite
 
 RUN apt-get clean && apt-get autoclean
 
-RUN ln -s /usr/sbin/php-fpm8.0 /usr/sbin/php-fpm
+RUN ln -s /usr/sbin/php-fpm8.1 /usr/sbin/php-fpm
 
 # install composer
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/bin --filename composer
