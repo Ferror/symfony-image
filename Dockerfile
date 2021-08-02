@@ -1,8 +1,10 @@
 FROM ubuntu:20.04
 ARG DEBIAN_FRONTEND=noninteractive
 
-RUN apt-get update && apt-get install -y software-properties-common
-RUN apt-get install \
+RUN apt-get update && apt-get install -y \
+    software-properties-common \
+    build-essential \
+    git \
     autoconf \
     re2c \
     bison \
@@ -25,10 +27,9 @@ RUN apt-get install \
     libzip-dev \
     libgccjit-10-dev
 
-RUN git clone https://github.com/php/php-src.git && cd php-src
-RUN ./buildconf
-
-RUN ./configure \
+RUN git clone https://github.com/php/php-src.git
+RUN ./php-src/buildconf
+RUN ./php-src/configure \
     --prefix=/opt/php/php8 \
     --enable-cli \
     --enable-fpm \
@@ -56,7 +57,6 @@ RUN ln -s /usr/sbin/php-fpm8 /usr/sbin/php-fpm
 
 # install composer
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/bin --filename composer
-
 RUN mkdir -p /run/php
 
 COPY nginx.conf         /etc/nginx/nginx.conf
