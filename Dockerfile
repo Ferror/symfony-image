@@ -27,9 +27,10 @@ RUN apt-get update && apt-get install -y \
     libzip-dev \
     libgccjit-10-dev
 
+CD php-src
 RUN git clone https://github.com/php/php-src.git
-RUN ./php-src/buildconf
-RUN ./php-src/configure \
+RUN ./buildconf
+RUN ./configure \
     --prefix=/opt/php/php8 \
     --enable-cli \
     --enable-fpm \
@@ -51,7 +52,9 @@ RUN ./php-src/configure \
     --with-xsl \
     --with-zlib
 
-RUN make && make test && make install
+RUN make
+RUN make test
+RUN make install
 RUN apt-get clean && apt-get autoclean
 RUN ln -s /usr/sbin/php-fpm8 /usr/sbin/php-fpm
 
