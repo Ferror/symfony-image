@@ -2,37 +2,57 @@ FROM ubuntu:20.04
 ARG DEBIAN_FRONTEND=noninteractive
 
 RUN apt-get update && apt-get install -y software-properties-common
-RUN add-apt-repository ppa:ondrej/php
+RUN apt-get install \
+    autoconf \
+    re2c \
+    bison \
+    libsqlite3-dev \
+    libpq-dev \
+    libonig-dev \
+    libfcgi-dev \
+    libfcgi0ldbl \
+    libjpeg-dev \
+    libpng-dev \
+    libssl-dev \
+    libxml2-dev \
+    libcurl4-openssl-dev \
+    libxpm-dev \
+    libgd-dev \
+    libmysqlclient-dev \
+    libfreetype6-dev \
+    libxslt1-dev \
+    libpspell-dev \
+    libzip-dev \
+    libgccjit-10-dev
 
-RUN apt-get update && apt-get install -y \
-    curl \
-    make \
-    nginx \
-    unzip \
-    supervisor\
-    php-common \
-    php-fpm \
-    php8.1-cli \
-    php8.1-bz2 \
-    php8.1-curl \
-    php8.1-intl \
-    php8.1-gd \
-    php8.1-mbstring \
-    php8.1-mysql \
-    php8.1-pgsql \
-    php8.1-opcache \
-    php8.1-soap \
-    php8.1-xml \
-    php8.1-zip \
-    php8.1-apcu \
-    php8.1-redis \
-    php8.1-xdebug \
-    php8.1-yaml \
-    php8.1-sqlite
+RUN git clone https://github.com/php/php-src.git && cd php-src
+RUN ./buildconf
 
+RUN ./configure \
+    --prefix=/opt/php/php8 \
+    --enable-cli \
+    --enable-fpm \
+    --enable-intl \
+    --enable-mbstring \
+    --enable-opcache \
+    --enable-sockets \
+    --enable-soap \
+    --with-curl \
+    --with-freetype \
+    --with-fpm-user=www-data \
+    --with-fpm-group=www-data \
+    --with-jpeg \
+    --with-mysql-sock \
+    --with-mysqli \
+    --with-openssl \
+    --with-pdo-mysql \
+    --with-pgsql \
+    --with-xsl \
+    --with-zlib
+
+RUN make && make test && make install
 RUN apt-get clean && apt-get autoclean
-
-RUN ln -s /usr/sbin/php-fpm8.1 /usr/sbin/php-fpm
+RUN ln -s /usr/sbin/php-fpm8 /usr/sbin/php-fpm
 
 # install composer
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/bin --filename composer
