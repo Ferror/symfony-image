@@ -8,6 +8,7 @@ RUN apt-get update && apt-get install -y \
     autoconf \
     re2c \
     bison \
+    curl \
     libsqlite3-dev \
     libpq-dev \
     libonig-dev \
@@ -51,9 +52,11 @@ RUN cd php-src && ./configure \
     --with-xsl \
     --with-zlib
 
-RUN cd php-src && make &&  make install
+RUN cd php-src && make && make test && make install
 RUN apt-get clean && apt-get autoclean
 RUN ln -s /usr/sbin/php-fpm8 /usr/sbin/php-fpm
+
+RUN /opt/php/php8/bin/php -v
 
 # install composer
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/bin --filename composer
