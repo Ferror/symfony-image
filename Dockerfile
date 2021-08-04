@@ -11,8 +11,7 @@ RUN apt update && apt install -y \
     libxml2-dev \
     libsqlite3-dev \
     g++ \
-    gcc \
-    nproc
+    gcc
 
 RUN git clone https://github.com/php/php-src.git
 RUN mv php-src/* .
@@ -20,7 +19,7 @@ RUN ./buildconf
 RUN ./configure \
     --prefix=/opt/php/php8 \
     --enable-debug
-RUN make -j "$(nproc)"; && make test && make install
+RUN make -j "$(nproc)"; && make TEST_PHP_ARGS=-j "$(nproc)"; test && make install
 RUN apt-get clean && apt-get autoclean
 RUN ln -s /usr/sbin/php-fpm8 /usr/sbin/php-fpm
 RUN /opt/php/php8/bin/php -v
