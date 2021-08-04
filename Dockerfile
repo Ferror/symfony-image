@@ -19,7 +19,9 @@ RUN ./buildconf
 RUN ./configure \
     --prefix=/opt/php/php8 \
     --enable-debug
-RUN make -j "$(nproc)"; && make TEST_PHP_ARGS=-j "$(nproc)"; test && make install
+RUN make
+RUN make test
+RUN make install
 RUN apt-get clean && apt-get autoclean
 RUN ln -s /usr/sbin/php-fpm8 /usr/sbin/php-fpm
 RUN /opt/php/php8/bin/php -v
