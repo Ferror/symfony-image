@@ -12,7 +12,7 @@ RUN apt update && apt install -y \
     libsqlite3-dev
 
 RUN git clone https://github.com/php/php-src.git
-RUN mv php-src .
+RUN mv php-src ./
 RUN ./buildconf
 RUN ./configure \
     --prefix=/opt/php/php8 \
