@@ -2,57 +2,21 @@ FROM ubuntu:20.04
 ARG DEBIAN_FRONTEND=noninteractive
 
 RUN apt-get update && apt-get install -y \
-    software-properties-common \
+    pkg-config \
     build-essential \
-    git \
     autoconf \
-    re2c \
     bison \
-    curl \
-    libsqlite3-dev \
-    libpq-dev \
-    libonig-dev \
-    libfcgi-dev \
-    libfcgi0ldbl \
-    libjpeg-dev \
-    libpng-dev \
-    libssl-dev \
+    re2c \
     libxml2-dev \
-    libcurl4-openssl-dev \
-    libxpm-dev \
-    libgd-dev \
-    libmysqlclient-dev \
-    libfreetype6-dev \
-    libxslt1-dev \
-    libpspell-dev \
-    libzip-dev \
-    libgccjit-10-dev
+    libsqlite3-dev
 
 RUN git clone https://github.com/php/php-src.git
-RUN cd php-src && ./buildconf
-RUN cd php-src && ./configure \
+RUN mv php-src .
+RUN ./buildconf
+RUN ./configure \
     --prefix=/opt/php/php8 \
-    --enable-cli \
-    --enable-fpm \
-    --enable-intl \
-    --enable-mbstring \
-    --enable-opcache \
-    --enable-sockets \
-    --enable-soap \
-    --with-curl \
-    --with-freetype \
-    --with-fpm-user=www-data \
-    --with-fpm-group=www-data \
-    --with-jpeg \
-    --with-mysql-sock \
-    --with-mysqli \
-    --with-openssl \
-    --with-pdo-mysql \
-    --with-pgsql \
-    --with-xsl \
-    --with-zlib
-
-RUN cd php-src && make && make test && make install
+    --enable-debug
+RUN make && make test && make install
 RUN apt-get clean && apt-get autoclean
 RUN ln -s /usr/sbin/php-fpm8 /usr/sbin/php-fpm
 
