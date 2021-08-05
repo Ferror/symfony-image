@@ -11,20 +11,20 @@ RUN apt update && apt install -y \
     libxml2-dev \
     libsqlite3-dev \
     g++ \
-    gcc
+    gcc \
+    curl
 
 RUN git clone https://github.com/php/php-src.git
 RUN mv php-src/* .
 RUN ./buildconf
 RUN ./configure \
     --prefix=/opt/php/php8 \
-    --enable-debug
+    --enable-debug \
+    --with-openssl
 RUN make
-RUN make test
 RUN make install
 RUN apt-get clean && apt-get autoclean
-RUN ln -s /usr/sbin/php-fpm8 /usr/sbin/php-fpm
-RUN /opt/php/php8/bin/php -v
+RUN ln -s /opt/php/php8/bin/php /usr/sbin/php
 
 # install composer
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/bin --filename composer
