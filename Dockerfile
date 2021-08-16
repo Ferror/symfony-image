@@ -1,4 +1,5 @@
 FROM ubuntu:20.04
+ARG DEBIAN_FRONTEND=noninteractive
 
 RUN apt update && apt install -y \
     git \
@@ -10,9 +11,12 @@ RUN apt update && apt install -y \
     re2c \
     libxml2-dev \
     libsqlite3-dev \
+    libssl-dev \
+    zlib1g-dev \
     g++ \
     gcc \
-    curl
+    curl \
+    nginx
 
 RUN git clone https://github.com/php/php-src.git
 RUN mv php-src/* .
@@ -20,10 +24,12 @@ RUN ./buildconf
 RUN ./configure \
     --prefix=/opt/php/php8 \
     --enable-debug \
-    --with-openssl
+    --with-openssl \
+    --with-zlib
+
 RUN make
 RUN make install
-RUN apt-get clean && apt-get autoclean
+RUN apt clean && apt autoclean
 RUN ln -s /opt/php/php8/bin/php /usr/sbin/php
 
 # install composer
