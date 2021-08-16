@@ -12,6 +12,7 @@ RUN apt update && apt install -y \
     libxml2-dev \
     libsqlite3-dev \
     libssl-dev \
+    zlib1g-dev \
     g++ \
     gcc \
     curl
@@ -22,7 +23,8 @@ RUN ./buildconf
 RUN ./configure \
     --prefix=/opt/php/php8 \
     --enable-debug \
-    --with-openssl
+    --with-openssl \
+    --with-zlib
 RUN make
 RUN make install
 RUN apt clean && apt autoclean
