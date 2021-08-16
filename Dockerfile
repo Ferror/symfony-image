@@ -1,4 +1,5 @@
 FROM ubuntu:20.04
+ARG DEBIAN_FRONTEND=noninteractive
 
 RUN apt update && apt install -y \
     git \
@@ -10,6 +11,7 @@ RUN apt update && apt install -y \
     re2c \
     libxml2-dev \
     libsqlite3-dev \
+    libssl-dev \
     g++ \
     gcc \
     curl
