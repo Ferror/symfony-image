@@ -5,6 +5,7 @@
 * PHP 7.4 ![Docker Hub](https://badgen.net/docker/size/ferror/symfony-image/7.4)
 * PHP 8.0 ![Docker Hub](https://badgen.net/docker/size/ferror/symfony-image/8.0)
 * PHP 8.1 ![Docker Hub](https://badgen.net/docker/size/ferror/symfony-image/8.1)
+* DEV     ![Docker Hub](https://badgen.net/docker/size/ferror/symfony-image/dev)
 
 ## Use Case
 ### Docker Compose
