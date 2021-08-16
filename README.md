@@ -54,4 +54,9 @@ run:
 	exec /usr/bin/supervisord -c /etc/supervisor/supervisord.conf
 ```
 
+## Development
+
+`docker build -t docker-name .`
+`docker run -i -t docker-name`
+
 Badges powered by [Badgen](https://badgen.net) - so if they fail - you know where to go
