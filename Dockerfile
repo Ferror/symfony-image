@@ -24,14 +24,14 @@ RUN ./configure \
     --enable-debug \
     --with-openssl
 RUN make
-#RUN make install
-#RUN apt-get clean && apt-get autoclean
-#RUN ln -s /opt/php/php8/bin/php /usr/sbin/php
+RUN make install
+RUN apt clean && apt autoclean
+RUN ln -s /opt/php/php8/bin/php /usr/sbin/php
 
 # install composer
-#RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/bin --filename composer
-#RUN mkdir -p /run/php
-#
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/bin --filename composer
+RUN mkdir -p /run/php
+
 #COPY nginx.conf         /etc/nginx/nginx.conf
 #COPY supervisor.conf    /etc/supervisor/conf.d/supervisor.conf
 #COPY www.conf           /etc/php/8.0/fpm/pool.d/www.conf
