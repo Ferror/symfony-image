@@ -25,7 +25,8 @@ RUN ./configure \
     --prefix=/opt/php/php8 \
     --enable-debug \
     --with-openssl \
-    --with-zlib
+    --with-zlib \
+    --enable-mbstring
 
 RUN make
 RUN make install
