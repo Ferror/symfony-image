@@ -13,6 +13,7 @@ RUN apt update && apt install -y \
     libsqlite3-dev \
     libssl-dev \
     zlib1g-dev \
+    libonig-dev \
     g++ \
     gcc \
     curl \
