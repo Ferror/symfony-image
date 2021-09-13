@@ -49,3 +49,5 @@ COPY supervisor.conf    /etc/supervisor/conf.d/supervisor.conf
 COPY php.ini            /etc/php/8.0/cli/php.ini
 
 WORKDIR /app
+
+EXPOSE 80
