@@ -47,5 +47,6 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/bin -
 COPY nginx.conf         /etc/nginx/nginx.conf
 COPY supervisor.conf    /etc/supervisor/conf.d/supervisor.conf
 COPY php.ini            /etc/php/8.0/cli/php.ini
+COPY www.conf           /etc/php/8.0/fpm/pool.d/www.conf
 
 WORKDIR /app
