@@ -50,3 +50,5 @@ COPY php.ini            /etc/php/8.0/cli/php.ini
 COPY www.conf           /etc/php/8.0/fpm/pool.d/www.conf
 
 WORKDIR /app
+
+EXPOSE 80
