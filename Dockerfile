@@ -47,7 +47,9 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/bin -
 COPY nginx.conf         /etc/nginx/nginx.conf
 COPY supervisor.conf    /etc/supervisor/conf.d/supervisor.conf
 COPY php.ini            /etc/php/8.0/cli/php.ini
-COPY www.conf           /etc/php/8.0/fpm/pool.d/www.conf
+COPY php.ini            /etc/php/8.0/fpm/php.ini
+
+COPY --from=spiralscout/roadrunner:2.4.2 /usr/bin/rr /usr/bin/rr
 
 WORKDIR /app
 
