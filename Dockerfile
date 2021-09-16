@@ -49,7 +49,7 @@ COPY supervisor.conf    /etc/supervisor/conf.d/supervisor.conf
 COPY php.ini            /etc/php/8.0/cli/php.ini
 COPY php.ini            /etc/php/8.0/fpm/php.ini
 
-COPY --from=spiralscout/roadrunner:2.4.2 /usr/bin/rr /usr/bin/rr
+COPY --from=spiralscout/roadrunner:2.4.2 /usr/bin/rr /usr/sbin/rr
 
 WORKDIR /app
 
