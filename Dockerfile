@@ -15,6 +15,7 @@ RUN apt-get update && apt-get install -y \
     php-pear \
     libz-dev \
     libcurl3-openssl-dev \
+    protobuf-compiler \
     php8.0-dev \
     php8.0-cli \
     php8.0-bz2 \
