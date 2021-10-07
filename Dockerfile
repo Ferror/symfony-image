@@ -27,7 +27,8 @@ RUN apt-get update && apt-get install -y \
     php7.4-xdebug \
     php7.4-yaml \
     php7.4-sqlite \
-    php7.4-uuid
+    php7.4-uuid \
+    php7.4-sockets
 
 RUN apt-get clean && apt-get autoclean
 
