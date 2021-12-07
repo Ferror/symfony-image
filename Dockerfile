@@ -1,46 +1,47 @@
 FROM ubuntu:20.04
 ARG DEBIAN_FRONTEND=noninteractive
 
-RUN apt update && apt install -y \
-    git \
-    make \
-    pkg-config \
-    build-essential \
-    autoconf \
-    bison \
-    re2c \
-    libxml2-dev \
-    libsqlite3-dev \
-    libssl-dev \
-    zlib1g-dev \
-    libonig-dev \
-    g++ \
-    gcc \
+RUN apt-get update && apt-get install -y software-properties-common
+RUN add-apt-repository ppa:ondrej/php
+
+RUN apt-get update && apt-get install -y \
     curl \
-    nginx
+    make \
+    nginx \
+    unzip \
+    supervisor\
+    php-common \
+    php-fpm \
+    php8.1-cli \
+    php8.1-bz2 \
+    php8.1-curl \
+    php8.1-intl \
+    php8.1-gd \
+    php8.1-mbstring \
+    php8.1-mysql \
+    php8.1-pgsql \
+    php8.1-opcache \
+    php8.1-soap \
+    php8.1-xml \
+    php8.1-zip \
+    php8.1-apcu \
+    php8.1-redis \
+    php8.1-xdebug \
+    php8.1-yaml \
+    php8.1-sqlite
 
-RUN git clone https://github.com/php/php-src.git
-RUN mv php-src/* .
-RUN ./buildconf
-RUN ./configure \
-    --prefix=/opt/php/php8 \
-    --enable-debug \
-    --with-openssl \
-    --with-zlib \
-    --enable-mbstring
+RUN apt-get clean && apt-get autoclean
 
-RUN make
-RUN make install
-RUN apt clean && apt autoclean
-RUN ln -s /opt/php/php8/bin/php /usr/sbin/php
+RUN ln -s /usr/sbin/php-fpm1.0 /usr/sbin/php-fpm
 
 # install composer
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/bin --filename composer
+
 RUN mkdir -p /run/php
 
 COPY nginx.conf         /etc/nginx/nginx.conf
 COPY supervisor.conf    /etc/supervisor/conf.d/supervisor.conf
-COPY www.conf           /etc/php/8.0/fpm/pool.d/www.conf
+COPY www.conf           /etc/php/8.1/fpm/pool.d/www.conf
 
 WORKDIR /app
 
