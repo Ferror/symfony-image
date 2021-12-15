@@ -32,7 +32,7 @@ RUN apt-get update && apt-get install -y \
 
 RUN apt-get clean && apt-get autoclean
 
-RUN ln -s /usr/sbin/php-fpm1.0 /usr/sbin/php-fpm
+RUN ln -s /usr/sbin/php-fpm8.1 /usr/sbin/php-fpm
 
 # install composer
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/bin --filename composer
