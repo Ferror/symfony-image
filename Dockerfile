@@ -10,8 +10,8 @@ RUN apt-get update && apt-get install -y \
     nginx \
     unzip \
     supervisor\
-    php-common \
-    php-fpm \
+    php8.1-common \
+    php8.1-fpm \
     php8.1-cli \
     php8.1-bz2 \
     php8.1-curl \
