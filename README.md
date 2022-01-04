@@ -39,7 +39,9 @@ services:
             - "traefik.http.routers.symfony.rule=Host(`symfony.malcherczyk.localhost`)"
         volumes:
             - ./:/app:delegated
-        networks:
+        depends_on:
+            - traefik
+	networks:
             - ferror
 
 networks:
