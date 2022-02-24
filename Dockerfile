@@ -12,6 +12,7 @@ RUN apt-get update && apt-get install -y \
     supervisor\
     php-common \
     php-fpm \
+    php-mongodb \
     php8.0-cli \
     php8.0-bz2 \
     php8.0-curl \
